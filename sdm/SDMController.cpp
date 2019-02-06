@@ -20,7 +20,7 @@
 #include "SDMController.h"
 
 #define LOAD_SDM_FUNCTION(name) \
-    mFn_##name = loadFunction<disp_api_##name>(mHandle, "disp_api_" #name);
+    mFn_##name = loadFunction<disp_api_##name>(mHandle.get(), "disp_api_" #name);
 
 #define CLOSE_SDM_FUNCTION(name) mFn_##name = nullptr;
 
@@ -59,8 +59,8 @@ constexpr char kFilename[] = "libsdm-disp-vndapis.so";
 #endif
 
 template <typename Function>
-Function loadFunction(std::shared_ptr<void> handle, const char* name) {
-    void* fn = dlsym(handle.get(), name);
+Function loadFunction(void* handle, const char* name) {
+    void* fn = dlsym(handle, name);
     if (fn == nullptr) {
         LOG(ERROR) << "loadFunction -- failed to load function " << name;
     }
