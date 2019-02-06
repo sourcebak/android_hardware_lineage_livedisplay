@@ -32,7 +32,7 @@ using ::android::hardware::Void;
 
 class DisplayModes : public IDisplayModes {
    public:
-    DisplayModes(std::shared_ptr<SDMController> controller, uint64_t cookie);
+    DisplayModes(const std::shared_ptr<SDMController>& controller, uint64_t cookie);
 
     bool isSupported();
 

@@ -63,8 +63,8 @@ using ::android::sp;
 
 static sp<PictureAdjustment> sInstance;
 
-PictureAdjustment::PictureAdjustment(std::shared_ptr<SDMController> controller, uint64_t cookie)
-    : mController(std::move(controller)), mCookie(cookie) {
+PictureAdjustment::PictureAdjustment(const std::shared_ptr<SDMController>& controller, uint64_t cookie)
+    : mController(controller), mCookie(cookie) {
     sInstance = this;
     memset(&mDefaultPictureAdjustment, 0, sizeof(HSIC));
 }

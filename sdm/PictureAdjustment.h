@@ -32,7 +32,7 @@ using ::android::hardware::Void;
 
 class PictureAdjustment : public IPictureAdjustment {
    public:
-    PictureAdjustment(std::shared_ptr<SDMController> controller, uint64_t cookie);
+    PictureAdjustment(const std::shared_ptr<SDMController>& controller, uint64_t cookie);
 
     bool isSupported();
 
