@@ -65,7 +65,7 @@ int main() {
 
     LOG(INFO) << "LiveDisplay HAL service is starting.";
 
-    controller = std::make_unique<SDMController>();
+    controller = std::make_shared<SDMController>();
     if (controller == nullptr) {
         LOG(ERROR) << "Failed to create SDMController";
         goto shutdown;
